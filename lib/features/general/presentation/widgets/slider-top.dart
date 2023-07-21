@@ -1,3 +1,5 @@
+import 'package:birthday_app/features/general/data/models/slider-image-model.dart';
+import 'package:birthday_app/features/general/data/slider-data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,9 +11,17 @@ class SliderTop extends StatefulWidget {
 }
 
 class _SliderTopState extends State<SliderTop> {
-  int imagesCount = 4;
   int activePage = 1;
-  PageController _pageController = PageController(initialPage: 1);
+  final PageController _pageController = PageController(initialPage: 1);
+  final List<SliderImageModel> sliderList = SliderData().getSliderList();
+  late int imagesCount;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    imagesCount = sliderList.length;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,17 +41,18 @@ class _SliderTopState extends State<SliderTop> {
             itemBuilder: (context, pagePosition) {
               return Stack(fit: StackFit.expand, children: [
                 Image.asset(
-                  'assets/images/general/image-slider-${pagePosition + 1}.png',
+                  sliderList[pagePosition].filePath,
                   fit: BoxFit.cover,
                 ),
                 Padding(
-                  padding: EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(15),
                   child: Container(
                     width: 128,
                     height: 63,
                     padding: const EdgeInsets.all(8),
                     decoration: ShapeDecoration(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4)),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -49,8 +60,8 @@ class _SliderTopState extends State<SliderTop> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '25 августа\n2023',
-                          style: TextStyle(
+                          sliderList[pagePosition].title,
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 24,
                             fontFamily: 'Jost',
@@ -81,14 +92,14 @@ class _SliderTopState extends State<SliderTop> {
 List<Widget> indicators(imagesLength, currentIndex) {
   return List<Widget>.generate(imagesLength, (index) {
     return Container(
-      margin: EdgeInsets.all(3),
+      margin: const EdgeInsets.all(3),
       width: currentIndex == index ? 30 : 5,
       height: 5,
       decoration: BoxDecoration(
           color: Colors.white,
           shape: currentIndex == index ? BoxShape.rectangle : BoxShape.circle,
           borderRadius: currentIndex == index
-              ? BorderRadius.all(Radius.circular(39))
+              ? const BorderRadius.all(Radius.circular(39))
               : null),
     );
   });

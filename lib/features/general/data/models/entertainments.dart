@@ -1,0 +1,6 @@
+class Entertainments{
+  final String title;
+  final String description;
+  final String imagePath;
+  Entertainments({required this.title, required this.description, required this.imagePath});
+}
