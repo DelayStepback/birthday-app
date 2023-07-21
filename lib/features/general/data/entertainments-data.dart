@@ -2,8 +2,8 @@
 import 'package:birthday_app/features/general/data/models/entertainments.dart';
 
 class EntertainmentsData{
-  static String _mainFolder = 'assets/images/general/entertainments/';
-  List<Entertainments> _entertainmentsList = [
+  static final String _mainFolder = 'assets/images/general/entertainments/';
+  final List<Entertainments> _entertainmentsList = [
     Entertainments(title: 'Настольные игры', description: 'Мафия, уно, домино, экивоки и другие',
         imagePath: _mainFolder + 'cardgames.png'),
     Entertainments(title: 'Бассейн', description: 'Два бассейна с подогревом',

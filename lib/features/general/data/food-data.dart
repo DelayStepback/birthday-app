@@ -1,7 +1,7 @@
 import 'models/food.dart';
 
 class FoodData{
-  List<Food> _foodList = [
+  final List<Food> _foodList = [
     Food(name: 'Канапе', filePath: "1.jpg"),
     Food(name: 'Сырная тарелка', filePath: "2.png"),
     Food(name: 'Шашлык на мангале', filePath: "3.jpg"),

@@ -17,14 +17,19 @@ class EntertainmentsTile extends StatelessWidget {
     return GestureDetector(
       onTap: ()=>{},
       child: ListTile(
-        leading: CircleAvatar(
-          radius: 21.w,
-          backgroundColor: Colors.transparent,
-          child: Image.asset(
-            imagePath,
+        leading: SizedBox(
+          width: 42.w,
+          height: 42.w,
+          child: CircleAvatar(
+            radius: 21.w,
+            backgroundColor: Colors.transparent,
+            child: Image.asset(
+              imagePath,
+            ),
           ),
         ),
-        titleAlignment: ListTileTitleAlignment.titleHeight,
+        minVerticalPadding: 15,
+        //titleAlignment: ListTileTitleAlignment.titleHeight,
         title: Text(title),
         titleTextStyle: TextStyle(
           color: const Color(0xFF171010),
@@ -39,7 +44,7 @@ class EntertainmentsTile extends StatelessWidget {
           fontFamily: 'Jost',
           fontWeight: FontWeight.w400,
         ),
-        trailing: Icon(
+        trailing: const Icon(
           Icons.arrow_forward_ios,
           size: 11,
           color: Color(0xFF4E4343),

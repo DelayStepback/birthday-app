@@ -61,9 +61,9 @@ class _SliderTopState extends State<SliderTop> {
                       children: [
                         Text(
                           sliderList[pagePosition].title,
-                          style: const TextStyle(
+                          style:  TextStyle(
                             color: Colors.white,
-                            fontSize: 24,
+                            fontSize: 24.sp,
                             fontFamily: 'Jost',
                             fontWeight: FontWeight.w700,
                             height: 1,

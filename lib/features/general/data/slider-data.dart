@@ -2,8 +2,8 @@ import 'package:birthday_app/features/general/data/models/slider-image-model.dar
 import 'models/slider-image-model.dart';
 
 class SliderData {
-  static String _mainFolder = 'assets/images/general/image-slider-';
-  List<SliderImageModel> _sliderList = [
+  static const String _mainFolder = 'assets/images/general/image-slider-';
+  final List<SliderImageModel> _sliderList = [
     SliderImageModel(
         title: '25 августа\n2023', filePath: _mainFolder + "1.png"),
     SliderImageModel(

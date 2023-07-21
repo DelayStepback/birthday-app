@@ -29,12 +29,13 @@ class _MenuGridState extends State<MenuGrid> {
     return Column(
       children: [
         GridView.builder(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             padding: EdgeInsets.symmetric(horizontal: 0.w),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               childAspectRatio: 1.1,
               crossAxisCount: 2,
+
             ),
             itemCount: gridCount,
             itemBuilder: (BuildContext ctx, index) {
@@ -48,10 +49,10 @@ class _MenuGridState extends State<MenuGrid> {
                       image: DecorationImage(
                           fit: BoxFit.cover,
                           image: AssetImage(folderLocate + foodList[index].filePath)),
-                      borderRadius: index % 2 == 0 ? BorderRadius.only(
+                      borderRadius: index % 2 == 0 ? const BorderRadius.only(
                           topRight: Radius.circular(20.0),
                           bottomLeft: Radius.circular(20.0)) :
-                      BorderRadius.only(
+                      const BorderRadius.only(
                           topLeft: Radius.circular(20.0),
                           bottomRight: Radius.circular(20.0)),
                     ),
@@ -64,7 +65,7 @@ class _MenuGridState extends State<MenuGrid> {
                       child: Text(foodList[index].name, textAlign: TextAlign.left,
 
                         style: TextStyle(
-                          color: Color(0xFF4D4242),
+                          color: const Color(0xFF4D4242),
                           fontSize: 14.w,
                           fontFamily: 'Jost',
                           fontWeight: FontWeight.w400,
@@ -82,7 +83,7 @@ class _MenuGridState extends State<MenuGrid> {
               }),
           child: Text(
             gridCount != 2 ? 'Свернуть ▲' : 'Развернуть ▼',
-            style: TextStyle(
+            style: const TextStyle(
               color: Color(0xFF171010),
               fontSize: 14,
               fontFamily: 'Jost',
