@@ -31,42 +31,52 @@ class _MenuGridState extends State<MenuGrid> {
         GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            padding: EdgeInsets.symmetric(horizontal: 0.w),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              childAspectRatio: 1.1,
-              crossAxisCount: 2,
+            padding: EdgeInsets.symmetric(horizontal: 32.w),
 
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              mainAxisSpacing: 0,
+              crossAxisSpacing: 28.w,
+
+              childAspectRatio: 0.82,
+              crossAxisCount: 2,
             ),
             itemCount: gridCount,
             itemBuilder: (BuildContext ctx, index) {
               return GestureDetector(
-                onTap: ()=>{print('asd')},
-                child: Column(children: [
-                  Container(
-                    height: 140.w,
-                    width: 140.w,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage(folderLocate + foodList[index].filePath)),
-                      borderRadius: index % 2 == 0 ? const BorderRadius.only(
-                          topRight: Radius.circular(20.0),
-                          bottomLeft: Radius.circular(20.0)) :
-                      const BorderRadius.only(
-                          topLeft: Radius.circular(20.0),
-                          bottomRight: Radius.circular(20.0)),
-                    ),
+                onTap: ()=>{},
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 140.w,
+                        width: 140.w,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage(folderLocate + foodList[index].filePath)),
+                          borderRadius: index % 2 == 0 ? const BorderRadius.only(
+                              topRight: Radius.circular(20.0),
+                              bottomLeft: Radius.circular(20.0)) :
+                          const BorderRadius.only(
+                              topLeft: Radius.circular(20.0),
+                              bottomRight: Radius.circular(20.0)),
+                        ),
+                      ),
+                    ],
                   ),
                   Align(
                     alignment: Alignment.centerLeft,
 
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 23.w),
+                      padding: EdgeInsets.symmetric(horizontal: 0.w),
                       child: Text(foodList[index].name, textAlign: TextAlign.left,
 
                         style: TextStyle(
                           color: const Color(0xFF4D4242),
-                          fontSize: 14.w,
+                          fontSize: 14.sp,
                           fontFamily: 'Jost',
                           fontWeight: FontWeight.w400,
 

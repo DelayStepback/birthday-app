@@ -111,7 +111,8 @@ class BodyGeneral extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 104,)
+        const SizedBox(height: 104,),
+
 
       ],
     );
