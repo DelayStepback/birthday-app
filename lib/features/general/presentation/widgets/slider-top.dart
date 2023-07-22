@@ -66,7 +66,7 @@ class _SliderTopState extends State<SliderTop> {
                             fontSize: 24.sp,
                             fontFamily: 'Jost',
                             fontWeight: FontWeight.w700,
-                            height: 1,
+                            height: 24.h/24.sp,
                           ),
                         ),
                       ],
@@ -91,16 +91,17 @@ class _SliderTopState extends State<SliderTop> {
 
 List<Widget> indicators(imagesLength, currentIndex) {
   return List<Widget>.generate(imagesLength, (index) {
-    return Container(
+    return AnimatedContainer(
+      duration: Duration(seconds: 2),
       margin: const EdgeInsets.all(3),
       width: currentIndex == index ? 30 : 5,
       height: 5,
       decoration: BoxDecoration(
           color: Colors.white,
-          shape: currentIndex == index ? BoxShape.rectangle : BoxShape.circle,
+//          shape: currentIndex == index ? BoxShape.rectangle : BoxShape.circle,
           borderRadius: currentIndex == index
               ? const BorderRadius.all(Radius.circular(39))
-              : null),
+              : const BorderRadius.all(Radius.circular(51))),
     );
   });
 }

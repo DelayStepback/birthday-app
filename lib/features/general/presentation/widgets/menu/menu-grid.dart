@@ -13,10 +13,11 @@ class MenuGrid extends StatefulWidget {
 
 class _MenuGridState extends State<MenuGrid> {
   late int gridCount;
-
   String folderLocate = 'assets/images/general/menu/';
-
   List<Food> foodList = FoodData().getFoodList();
+
+
+
 
   @override
   void initState() {

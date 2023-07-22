@@ -1,5 +1,7 @@
 import 'package:birthday_app/features/general/presentation/widgets/entertainments/entertainments-list-widget.dart';
+import 'package:birthday_app/features/general/presentation/widgets/mapkit-yandex-widget.dart';
 import 'package:birthday_app/features/general/presentation/widgets/menu/menu-grid.dart';
+import 'package:birthday_app/features/general/presentation/widgets/nav-button-general.dart';
 import 'package:birthday_app/features/general/presentation/widgets/slider-top.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,31 +16,23 @@ class BodyGeneral extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         const SliderTop(),
-        Padding(
-          padding: EdgeInsets.only(left: 16.w, right: 27.w, top: 16.h),
-          child: Text(
-            'Приглашаю своих дорогих друзей отметить мой день рождения в замечательном месте с множеством развлечений, вкусных блюд и хорошим настроением!',
-            style: TextStyle(
-              color: const Color(0xFF161010),
-              fontSize: 14.sp,
-              fontFamily: 'Jost',
-              fontWeight: FontWeight.w400,
-            ),
-          ),
+        TextAfterUpAnimated(),
+        SizedBox(
+          height: 15.h,
         ),
-        SizedBox(height: 15.h,),
-
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-                NavButtonGeneral(title: 'Список гостей'),
+              NavButtonGeneral(title: 'Список гостей'),
               NavButtonGeneral(title: 'Вишлист')
             ],
           ),
         ),
-        SizedBox(height: 30.h,),
+        SizedBox(
+          height: 30.h,
+        ),
         Text(
           'Меню',
           textAlign: TextAlign.center,
@@ -49,9 +43,13 @@ class BodyGeneral extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
         ),
-        const SizedBox(height: 16,),
+        const SizedBox(
+          height: 16,
+        ),
         const MenuGrid(),
-        const SizedBox(height: 30,),
+        const SizedBox(
+          height: 30,
+        ),
         Text(
           'Развлечения',
           textAlign: TextAlign.center,
@@ -63,7 +61,9 @@ class BodyGeneral extends StatelessWidget {
           ),
         ),
         const EntertainmentsListView(),
-        const SizedBox(height: 30,),
+        const SizedBox(
+          height: 30,
+        ),
         Text(
           'Место',
           textAlign: TextAlign.center,
@@ -74,20 +74,10 @@ class BodyGeneral extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
         ),
-        const SizedBox(height: 16,),
-        Container(
-          width: 343.w,
-          height: 246.w,
-          decoration: const ShapeDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/general/map.png"),
-              fit: BoxFit.fill,
-            ),
-            shape: RoundedRectangleBorder(
-              side: BorderSide(width: 0.50, color: Color(0xFF4E4343)),
-            ),
-          ),
+        const SizedBox(
+          height: 16,
         ),
+        const MapKitYandexWidget(),
         Text(
           'Центральная ул., 84, хутор Седых',
           style: TextStyle(
@@ -97,7 +87,9 @@ class BodyGeneral extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
         ),
-        const SizedBox(height: 10,),
+        const SizedBox(
+          height: 10,
+        ),
         GestureDetector(
           onTap: () => _launchUrl('https://prosto-les.clients.site/'),
           child: Text(
@@ -108,56 +100,68 @@ class BodyGeneral extends StatelessWidget {
               fontFamily: 'Jost',
               fontWeight: FontWeight.w400,
               decoration: TextDecoration.underline,
+              height: 18.55.h / 14.sp,
             ),
           ),
         ),
-        const SizedBox(height: 104,),
-
-
+        const SizedBox(
+          height: 104,
+        ),
       ],
     );
   }
+
   Future<void> _launchUrl(url) async {
-    final Uri _url = Uri.parse(url);
-    if (!await launchUrl(_url)) {
-      throw Exception('Could not launch $_url');
+    final Uri url0 = Uri.parse(url);
+    if (!await launchUrl(url0)) {
+      throw Exception('Could not launch $url0');
     }
   }
 }
 
 
-class NavButtonGeneral extends StatelessWidget {
-  final String title;
-  const NavButtonGeneral({super.key, required this.title, navigate});
-
+class TextAfterUpAnimated extends StatefulWidget {
+  const TextAfterUpAnimated({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(15.0),
-      onTap: () {
+  State<TextAfterUpAnimated> createState() => _TextAfterUpAnimatedState();
+}
+class _TextAfterUpAnimatedState extends State<TextAfterUpAnimated> {
 
+  bool _selectedBottomAppBarText = false;
+  void _changeText(){
+    setState(() {
+      _selectedBottomAppBarText= _selectedBottomAppBarText == true ? false: true;
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: ()=>{
+        _changeText(),
       },
-      child: Container(
-        width: 156.w,
-        height: 50.h,
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
-        decoration: ShapeDecoration(
-          color: const Color(0xFFFDAC07),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
+      child: AnimatedDefaultTextStyle(
+        style: _selectedBottomAppBarText
+            ? TextStyle(
+          color: const Color(0xFF191999),
+          fontSize: 18.sp,
+          fontFamily: 'Jost',
+          fontWeight: FontWeight.w400,
+          height: 2,
+        )
+            : TextStyle(
+          color: const Color(0xFF161010),
+          fontSize: 14.sp,
+          fontFamily: 'Jost',
+          fontWeight: FontWeight.w400,
+          height: 1,
         ),
-        child:
-        Center(
+        duration: Duration(seconds: 2),
+        child: Padding(
+          padding: EdgeInsets.only(left: 16.w, right: 27.w, top: 16.h),
           child: Text(
-            title,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16.sp,
-              fontFamily: 'Jost',
-              fontWeight: FontWeight.w600,
-            ),
+            'Приглашаю своих дорогих друзей отметить мой день рождения в замечательном месте с множеством развлечений, вкусных блюд и хорошим настроением!',
+
           ),
         ),
       ),
