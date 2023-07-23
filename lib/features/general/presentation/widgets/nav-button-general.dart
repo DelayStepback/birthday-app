@@ -31,7 +31,6 @@ class _NavButtonGeneralState extends State<NavButtonGeneral> {
       borderRadius: BorderRadius.circular(15.0),
       onTap: () {
         _changeSelected();
-        print('changed');
       },
       child: AnimatedContainer(
         duration: Duration(seconds: 2),
