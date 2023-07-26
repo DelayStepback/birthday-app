@@ -1,4 +1,4 @@
-import 'models/food.dart';
+import '../general/food.dart';
 
 class FoodData{
   final List<Food> _foodList = [

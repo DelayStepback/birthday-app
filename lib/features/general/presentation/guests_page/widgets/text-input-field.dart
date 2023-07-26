@@ -7,10 +7,12 @@ class TextInputField extends StatelessWidget {
     super.key,
     required this.textEditingController,
     required this.labelText,
+    required this.autofocus,
   });
 
   final TextEditingController textEditingController;
   final String labelText;
+  final bool autofocus;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +22,7 @@ class TextInputField extends StatelessWidget {
       padding: EdgeInsets.only(top: 8, left: 12, right: 12, bottom: 8),
       child: Center(
         child: TextFormField(
+          autofocus: autofocus,
           controller: textEditingController,
           style: TextStyle(
             color: Color(0xFF171010),

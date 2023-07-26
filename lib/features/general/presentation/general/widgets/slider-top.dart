@@ -1,7 +1,8 @@
-import 'package:birthday_app/features/general/data/models/slider-image-model.dart';
-import 'package:birthday_app/features/general/data/slider-data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../data/models/general/slider-image-model.dart';
+import '../../../data/models/general_data/slider-data.dart';
 
 class SliderTop extends StatefulWidget {
   const SliderTop({super.key});

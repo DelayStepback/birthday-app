@@ -1,9 +1,9 @@
-import 'package:birthday_app/features/general/data/food-data.dart';
+import 'package:birthday_app/features/general/data/models/general_data/food-data.dart';
 import 'package:birthday_app/features/general/presentation/general/widgets/food-details-screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../data/models/food.dart';
+import '../../../../data/models/general/food.dart';
 
 class MenuGrid extends StatefulWidget {
   const MenuGrid({super.key});

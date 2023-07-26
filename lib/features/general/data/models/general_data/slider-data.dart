@@ -1,6 +1,4 @@
-import 'package:birthday_app/features/general/data/models/slider-image-model.dart';
-import 'models/slider-image-model.dart';
-
+import 'package:birthday_app/features/general/data/models/general/slider-image-model.dart';
 class SliderData {
   static const String _mainFolder = 'assets/images/general/image-slider-';
   final List<SliderImageModel> _sliderList = [

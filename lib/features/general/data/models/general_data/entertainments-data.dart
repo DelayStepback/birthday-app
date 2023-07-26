@@ -1,5 +1,5 @@
 
-import 'package:birthday_app/features/general/data/models/entertainments.dart';
+import 'package:birthday_app/features/general/data/models/general/entertainments.dart';
 
 class EntertainmentsData{
   static final String _mainFolder = 'assets/images/general/entertainments/';

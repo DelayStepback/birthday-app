@@ -1,5 +1,5 @@
-import 'package:birthday_app/features/general/data/entertainments-data.dart';
-import 'package:birthday_app/features/general/data/models/entertainments.dart';
+import 'package:birthday_app/features/general/data/models/general_data/entertainments-data.dart';
+import 'package:birthday_app/features/general/data/models/general/entertainments.dart';
 import 'package:flutter/material.dart';
 
 import 'entertainments-tile.dart';
