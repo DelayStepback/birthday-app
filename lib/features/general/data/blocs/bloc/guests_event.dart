@@ -1,0 +1,44 @@
+import 'package:equatable/equatable.dart';
+
+import '../../models/guests/guest.dart';
+
+abstract class GuestsEvent extends Equatable {
+  const GuestsEvent();
+
+  @override
+  List<Object?> get props => [];
+
+}
+
+class AddGuest extends GuestsEvent{
+  final Guest guest;
+
+  const AddGuest({
+    required this.guest,
+  });
+
+  @override
+  List<Object?> get props => [guest];
+}
+
+class UpdateGuest extends GuestsEvent{
+  final Guest guest;
+
+  const UpdateGuest({
+    required this.guest,
+  });
+
+  @override
+  List<Object?> get props => [guest];
+}
+
+class DeleteGuest extends GuestsEvent{
+  final Guest guest;
+
+  const DeleteGuest({
+    required this.guest,
+  });
+
+  @override
+  List<Object?> get props => [guest];
+}

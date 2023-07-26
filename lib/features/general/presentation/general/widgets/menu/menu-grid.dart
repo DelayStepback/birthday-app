@@ -1,9 +1,9 @@
 import 'package:birthday_app/features/general/data/food-data.dart';
-import 'package:birthday_app/features/general/presentation/widgets/food-details-screen.dart';
+import 'package:birthday_app/features/general/presentation/general/widgets/food-details-screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../data/models/food.dart';
+import '../../../../data/models/food.dart';
 
 class MenuGrid extends StatefulWidget {
   const MenuGrid({super.key});
@@ -39,19 +39,16 @@ class _MenuGridState extends State<MenuGrid> {
             ),
             itemCount: gridCount,
             itemBuilder: (BuildContext ctx, index) {
-              return Hero(
-                tag: folderLocate + foodList[index].filePath,
-                child: GestureDetector(
-                  onTap: () => {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => FoodDetailsScreen(imagePath: folderLocate + foodList[index].filePath,
-                              titleName: foodList[index].name)))
-                  },
-                  child: SingleFoodCard(imagePath: folderLocate + foodList[index].filePath,
-                      titleName: foodList[index].name, isEven: index % 2 == 0),
-                ),
+              return GestureDetector(
+                onTap: () => {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FoodDetailsScreen(imagePath: folderLocate + foodList[index].filePath,
+                            titleName: foodList[index].name, ingredients: foodList[index].ingredients,)))
+                },
+                child: SingleFoodCard(imagePath: folderLocate + foodList[index].filePath,
+                    titleName: foodList[index].name, isEven: index % 2 == 0),
               );
             }),
         InkWell(

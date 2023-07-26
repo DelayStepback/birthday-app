@@ -1,8 +1,9 @@
-import 'package:birthday_app/features/general/presentation/widgets/entertainments/entertainments-list-widget.dart';
-import 'package:birthday_app/features/general/presentation/widgets/mapkit-yandex-widget.dart';
-import 'package:birthday_app/features/general/presentation/widgets/menu/menu-grid.dart';
-import 'package:birthday_app/features/general/presentation/widgets/nav-button-general.dart';
-import 'package:birthday_app/features/general/presentation/widgets/slider-top.dart';
+import 'package:birthday_app/features/general/presentation/general/widgets/entertainments/entertainments-list-widget.dart';
+import 'package:birthday_app/features/general/presentation/general/widgets/mapkit-yandex-widget.dart';
+import 'package:birthday_app/features/general/presentation/general/widgets/menu/menu-grid.dart';
+import 'package:birthday_app/features/general/presentation/general/widgets/nav-button-general.dart';
+import 'package:birthday_app/features/general/presentation/general/widgets/slider-top.dart';
+import 'package:birthday_app/features/general/presentation/guests_page/guests_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -22,10 +23,17 @@ class BodyGeneral extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: const Row(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              NavButtonGeneral(title: 'Список гостей'),
+              GestureDetector(
+                  onTap: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => GuestsPage()))
+                      },
+                  child: NavButtonGeneral(title: 'Список гостей')),
               NavButtonGeneral(title: 'Вишлист')
             ],
           ),
@@ -119,49 +127,50 @@ class BodyGeneral extends StatelessWidget {
   }
 }
 
-
 class TextAfterUpAnimated extends StatefulWidget {
   const TextAfterUpAnimated({super.key});
 
   @override
   State<TextAfterUpAnimated> createState() => _TextAfterUpAnimatedState();
 }
-class _TextAfterUpAnimatedState extends State<TextAfterUpAnimated> {
 
+class _TextAfterUpAnimatedState extends State<TextAfterUpAnimated> {
   bool _selectedBottomAppBarText = false;
-  void _changeText(){
+
+  void _changeText() {
     setState(() {
-      _selectedBottomAppBarText= _selectedBottomAppBarText == true ? false: true;
+      _selectedBottomAppBarText =
+          _selectedBottomAppBarText == true ? false : true;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()=>{
+      onTap: () => {
         _changeText(),
       },
       child: AnimatedDefaultTextStyle(
         style: _selectedBottomAppBarText
             ? TextStyle(
-          color: const Color(0xFF191999),
-          fontSize: 18.sp,
-          fontFamily: 'Jost',
-          fontWeight: FontWeight.w400,
-          height: 2,
-        )
+                color: const Color(0xFF191999),
+                fontSize: 18.sp,
+                fontFamily: 'Jost',
+                fontWeight: FontWeight.w400,
+                height: 2,
+              )
             : TextStyle(
-          color: const Color(0xFF161010),
-          fontSize: 14.sp,
-          fontFamily: 'Jost',
-          fontWeight: FontWeight.w400,
-          height: 1,
-        ),
+                color: const Color(0xFF161010),
+                fontSize: 14.sp,
+                fontFamily: 'Jost',
+                fontWeight: FontWeight.w400,
+                height: 1,
+              ),
         duration: Duration(seconds: 2),
         child: Padding(
           padding: EdgeInsets.only(left: 16.w, right: 27.w, top: 16.h),
           child: Text(
             'Приглашаю своих дорогих друзей отметить мой день рождения в замечательном месте с множеством развлечений, вкусных блюд и хорошим настроением!',
-
           ),
         ),
       ),
