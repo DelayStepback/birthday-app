@@ -20,12 +20,13 @@ class AddGuest extends GuestsEvent{
   @override
   List<Object?> get props => [guest];
 }
-
 class UpdateGuest extends GuestsEvent{
   final Guest guest;
+  final Guest newStateGuest;
 
   const UpdateGuest({
     required this.guest,
+    required this.newStateGuest,
   });
 
   @override
