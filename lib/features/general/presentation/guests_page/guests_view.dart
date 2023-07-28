@@ -3,7 +3,7 @@ import 'package:birthday_app/features/general/presentation/guests_page/widgets/g
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../general/data/blocs/bloc/guests_state.dart';
+import '../../../general/data/blocs/guests_bloc/guests_state.dart';
 import '../../../general/data/blocs/bloc_exports.dart';
 import '../../../general/data/models/guests/guest.dart';
 

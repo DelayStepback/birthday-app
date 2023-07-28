@@ -2,7 +2,7 @@ import 'package:birthday_app/features/general/data/blocs/bloc_exports.dart';
 import 'package:birthday_app/features/general/presentation/guests_page/widgets/text-input-field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../data/blocs/bloc/guests_event.dart';
+import '../../../data/blocs/guests_bloc/guests_event.dart';
 import '../../../data/models/guests/guest.dart';class AddGuestModalMenu extends StatefulWidget {
   final String action;
   final Guest? oldGuest;

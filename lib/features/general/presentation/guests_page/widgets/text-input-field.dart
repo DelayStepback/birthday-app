@@ -34,7 +34,7 @@ class TextInputField extends StatelessWidget {
     return Container(
       color: const Color(0xFFF2F8EF),
       height: 61.sp,
-      padding: EdgeInsets.only(top: 8.h, left: 12.w, right: 12.w, bottom: 8.h),
+      padding: EdgeInsets.only(left: 12.w, right: 12.w),
       child: Center(
         child: TextFormField(
           keyboardType: TextInputType.phone,

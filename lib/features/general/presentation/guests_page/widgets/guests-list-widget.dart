@@ -3,7 +3,7 @@ import 'package:birthday_app/features/general/presentation/guests_page/guests_vi
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-import '../../../data/blocs/bloc/guests_event.dart';
+import '../../../data/blocs/guests_bloc/guests_event.dart';
 import '../../../data/models/guests/guest.dart';
 import 'add-guest-modal.dart';
 

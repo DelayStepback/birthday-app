@@ -3,8 +3,8 @@ import '../../models/guests/guest.dart';
 
 class GuestsState extends Equatable{
 
-  late final List<Guest> allGuests;
-  GuestsState( {
+  final List<Guest> allGuests;
+  const GuestsState( {
     this.allGuests = const <Guest> []
   });
 

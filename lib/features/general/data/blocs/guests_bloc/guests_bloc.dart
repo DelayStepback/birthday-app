@@ -5,7 +5,7 @@ import 'guests_event.dart';
 import 'guests_state.dart';
 
 class GuestsBloc extends Bloc<GuestsEvent, GuestsState> {
-  GuestsBloc() : super(GuestsState()) {
+  GuestsBloc() : super(const GuestsState()) {
     on<AddGuest>(_onAddGuest);
     on<UpdateGuest>(_onUpdateGuest);
     on<DeleteGuest>(_onDeleteGuest);
