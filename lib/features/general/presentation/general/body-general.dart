@@ -16,7 +16,7 @@ class BodyGeneral extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        const SliderTop(),
+        SliderTop(),
         TextAfterUpAnimated(),
         SizedBox(
           height: 15.h,

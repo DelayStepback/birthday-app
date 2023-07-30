@@ -22,6 +22,6 @@ class FoodBloc extends Bloc<FoodEvent, FoodState> {
       }
   }
   void _onChangeViewFoodsEvent(event, emit){
-    emit(FoodLoadedState(event.foods, event.gridCount));
+    emit(FoodLoadedState(event.foods, event.gridCount != 2 ? 2 : event.foods.length));
   }
 }

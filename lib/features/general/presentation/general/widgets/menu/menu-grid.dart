@@ -61,10 +61,9 @@ class MenuGrid extends StatelessWidget {
                   }),
               InkWell(
                 onTap: () => {
-                  print('grid ${state.gridCount}'),
                   BlocProvider.of<FoodBloc>(context).add(ChangeViewFoodsEvent(
-                      foods: foodsList,
-                      gridCount: state.gridCount != 2 ? 2 : foodsList.length))
+                      foods: state.foods,
+                      gridCount: state.gridCount))
                 },
                 child: Text(
                   state.gridCount != 2 ? 'Свернуть ▲' : 'Развернуть ▼',
