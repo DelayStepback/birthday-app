@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
+import 'features/general/data/models/guests/guest.dart';
 import 'features/general/data/repository/entertainments/entertainments-repository.dart';
 import 'features/general/data/repository/food/food-repository.dart';
 import 'features/general/data/repository/slider/slider-repository.dart';
@@ -17,6 +18,11 @@ import 'features/general/presentation/general/general-screen.dart';
 Future<void> main() async {
   AndroidYandexMap.useAndroidViewSurface = false;
   await Hive.initFlutter();
+
+  Hive.registerAdapter(GuestAdapter());
+  await Hive.openBox<Guest>("_guestsBox");
+
+
   runApp(const MyApp());
 }
 

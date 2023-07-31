@@ -3,8 +3,8 @@ import 'package:hive/hive.dart';
 
 part 'guest.g.dart';
 
-@HiveType(typeId: 1)
-class Guest extends Equatable with HiveObjectMixin {
+@HiveType(typeId: 0)
+class Guest extends HiveObject with EquatableMixin {
   @HiveField(0)
   final String firstName;
   @HiveField(1)
@@ -46,7 +46,6 @@ class Guest extends Equatable with HiveObjectMixin {
   }
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
         firstName,
         lastName,

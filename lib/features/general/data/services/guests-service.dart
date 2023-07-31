@@ -3,12 +3,19 @@ import 'package:hive/hive.dart';
 import '../models/guests/guest.dart';
 
 class GuestsService {
-  late Box<Guest> _guests;
+  var _guests;
 
   Future<void> init() async {
-    Hive.registerAdapter(GuestAdapter());
-    _guests = await Hive.openBox<Guest>('guests');
-    _guests.add(Guest(firstName: 'InitialName', lastName: 'asdasd', birthdayDate: DateTime.now(), createdTime: DateTime.now(), phone: '32424', profession: 'profession'));
+//    print(Hive.isAdapterRegistered(0));
+//    _guests = await Hive.openBox('guestsBox');
+    _guests = await Hive.openBox<Guest>("_guestsBox");
+    // _guests.add(Guest(
+    //     firstName: 'InitialName',
+    //     lastName: 'asdasd',
+    //     birthdayDate: DateTime.now(),
+    //     createdTime: DateTime.now(),
+    //     phone: '32424',
+    //     profession: 'profession'));
   }
 
   Future<Guest> getGuest(String firstName, String lastName) async {
@@ -33,7 +40,7 @@ class GuestsService {
 
   Future<void> updateGuest(Guest oldGuest, Guest newGuest) async {
     final guestToUpdate =
-    _guests.values.firstWhere((element) => _eqTwoGuests(element, oldGuest));
+        _guests.values.firstWhere((element) => _eqTwoGuests(element, oldGuest));
     final index = guestToUpdate.key as int;
     await _guests.put(index, newGuest);
   }

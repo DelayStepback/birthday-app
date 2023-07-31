@@ -8,7 +8,7 @@ part of 'guest.dart';
 
 class GuestAdapter extends TypeAdapter<Guest> {
   @override
-  final int typeId = 1;
+  final int typeId = 0;
 
   @override
   Guest read(BinaryReader reader) {
