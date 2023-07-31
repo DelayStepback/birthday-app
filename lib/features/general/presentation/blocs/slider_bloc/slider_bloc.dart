@@ -1,7 +1,9 @@
-import 'package:birthday_app/features/general/data/blocs/slider_bloc/slider_event.dart';
-import 'package:birthday_app/features/general/data/blocs/slider_bloc/slider_state.dart';
-import 'package:bloc/bloc.dart';
-import '../../../domain/repository/slider/slider-repository.dart';
+import 'package:birthday_app/features/general/presentation/blocs/slider_bloc/slider_event.dart';
+import 'package:birthday_app/features/general/presentation/blocs/slider_bloc/slider_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../data/repository/slider/slider-repository.dart';
+
 
 
 class SliderBloc extends Bloc<SliderEvent, SliderState> {

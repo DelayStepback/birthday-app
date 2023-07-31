@@ -1,9 +1,11 @@
-import 'package:birthday_app/features/general/data/blocs/bloc_exports.dart';
 import 'package:birthday_app/features/general/presentation/guests_page/widgets/text-input-field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../data/blocs/guests_bloc/guests_event.dart';
-import '../../../data/models/guests/guest.dart';class AddGuestModalMenu extends StatefulWidget {
+import 'package:intl/intl.dart';
+import '../../../data/models/guests/guest.dart';
+import '../../blocs/guests_bloc/guests_bloc.dart';
+import '../../blocs/guests_bloc/guests_event.dart';class AddGuestModalMenu extends StatefulWidget {
   final String action;
   final Guest? oldGuest;
 
@@ -23,6 +25,7 @@ class _AddGuestModalMenuState extends State<AddGuestModalMenu> {
     if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
+        birthdayDate = DateFormat('dd-MM-yyyy').format(selectedDate);
       });
     }
   }
@@ -32,6 +35,7 @@ class _AddGuestModalMenuState extends State<AddGuestModalMenu> {
   TextEditingController lastNameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController professionController = TextEditingController();
+  String birthdayDate = 'Дата рождения';
 
   @override
   void initState() {
@@ -41,6 +45,7 @@ class _AddGuestModalMenuState extends State<AddGuestModalMenu> {
       phoneController.text = widget.oldGuest!.phone;
       professionController.text = widget.oldGuest!.profession;
       selectedDate = widget.oldGuest!.birthdayDate;
+      birthdayDate = DateFormat('dd-MM-yyyy').format(selectedDate);
     }
     super.initState();
   }
@@ -56,6 +61,7 @@ class _AddGuestModalMenuState extends State<AddGuestModalMenu> {
             elevation: 0,
             insetPadding: const EdgeInsets.all(0),
             child: SizedBox(
+              height: 633.h,
               width: MediaQuery.of(context).size.width,
               child: Column(
                 children: [
@@ -84,11 +90,11 @@ class _AddGuestModalMenuState extends State<AddGuestModalMenu> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text('Дата рождения', style: TextStyle(
+                      Text(birthdayDate, style: TextStyle(
                         color: Color(0xFF171010),
-                        fontSize: 14,
+                        fontSize: birthdayDate == 'Дата рождения'? 13: 16,
                         fontFamily: 'Jost',
-                        fontWeight: FontWeight.w500,
+                        fontWeight: birthdayDate == 'Дата рождения'? FontWeight.w400 : FontWeight.w500,
                       ),),
                       IconButton(
                         icon: Icon(Icons.calendar_month),

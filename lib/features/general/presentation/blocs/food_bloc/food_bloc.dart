@@ -1,6 +1,6 @@
-import 'package:birthday_app/features/general/domain/repository/food/food-repository.dart';
 import 'package:bloc/bloc.dart';
 
+import '../../../data/repository/food/food-repository.dart';
 import 'food_event.dart';
 import 'food_state.dart';
 

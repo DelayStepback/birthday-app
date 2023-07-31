@@ -1,14 +1,24 @@
 import 'package:equatable/equatable.dart';
-class Guest extends Equatable{
+import 'package:hive/hive.dart';
 
+part 'guest.g.dart';
+
+@HiveType(typeId: 1)
+class Guest extends Equatable with HiveObjectMixin {
+  @HiveField(0)
   final String firstName;
+  @HiveField(1)
   final String lastName;
+  @HiveField(2)
   final DateTime birthdayDate;
+  @HiveField(3)
   final DateTime createdTime;
+  @HiveField(4)
   final String phone;
+  @HiveField(5)
   final String profession;
 
-  const Guest({
+  Guest({
     required this.firstName,
     required this.lastName,
     required this.birthdayDate,
@@ -38,11 +48,11 @@ class Guest extends Equatable{
   @override
   // TODO: implement props
   List<Object?> get props => [
-  firstName,
-  lastName,
-  birthdayDate,
-  createdTime,
-  phone,
-  profession,
-  ];
+        firstName,
+        lastName,
+        birthdayDate,
+        createdTime,
+        phone,
+        profession,
+      ];
 }

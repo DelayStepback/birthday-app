@@ -1,12 +1,12 @@
-import 'package:birthday_app/features/general/data/blocs/food_bloc/food_event.dart';
 import 'package:birthday_app/features/general/presentation/general/widgets/food-details-screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../data/blocs/bloc_exports.dart';
-import '../../../../data/blocs/food_bloc/food_bloc.dart';
-import '../../../../data/blocs/food_bloc/food_state.dart';
 import '../../../../data/models/general/food.dart';
+import '../../../blocs/food_bloc/food_bloc.dart';
+import '../../../blocs/food_bloc/food_event.dart';
+import '../../../blocs/food_bloc/food_state.dart';
 
 class MenuGrid extends StatelessWidget {
   const MenuGrid({super.key});

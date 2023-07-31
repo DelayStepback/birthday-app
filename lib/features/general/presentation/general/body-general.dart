@@ -31,7 +31,7 @@ class BodyGeneral extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => GuestsPage()))
+                                builder: (context) => const GuestsPage()))
                       },
                   child: NavButtonGeneral(title: 'Список гостей')),
               NavButtonGeneral(title: 'Вишлист')

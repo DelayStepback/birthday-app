@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../../models/general/slider-image-model.dart';
+import '../../../data/models/general/slider-image-model.dart';
 
 abstract class SliderEvent extends Equatable {
   const SliderEvent();

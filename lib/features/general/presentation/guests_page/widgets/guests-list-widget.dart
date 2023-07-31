@@ -1,10 +1,10 @@
-import 'package:birthday_app/features/general/data/blocs/bloc_exports.dart';
-import 'package:birthday_app/features/general/presentation/guests_page/guests_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-import '../../../data/blocs/guests_bloc/guests_event.dart';
 import '../../../data/models/guests/guest.dart';
+import '../../blocs/guests_bloc/guests_bloc.dart';
+import '../../blocs/guests_bloc/guests_event.dart';
 import 'add-guest-modal.dart';
 
 class GuestsList extends StatelessWidget {

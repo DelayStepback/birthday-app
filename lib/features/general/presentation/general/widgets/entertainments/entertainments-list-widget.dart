@@ -1,10 +1,10 @@
-import 'package:birthday_app/features/general/data/blocs/entertainments_bloc/entertainments_event.dart';
 import 'package:birthday_app/features/general/data/models/general/entertainments.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../data/blocs/bloc_exports.dart';
-import '../../../../data/blocs/entertainments_bloc/entertainments_bloc.dart';
-import '../../../../data/blocs/entertainments_bloc/entertainments_state.dart';
+import '../../../blocs/entertainments_bloc/entertainments_bloc.dart';
+import '../../../blocs/entertainments_bloc/entertainments_event.dart';
+import '../../../blocs/entertainments_bloc/entertainments_state.dart';
 import 'entertainments-tile.dart';
 
 class EntertainmentsListView extends StatelessWidget {

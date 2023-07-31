@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../data/blocs/bloc_exports.dart';
-import '../../../data/blocs/slider_bloc/slider_bloc.dart';
-import '../../../data/blocs/slider_bloc/slider_event.dart';
-import '../../../data/blocs/slider_bloc/slider_state.dart';
 import '../../../data/models/general/slider-image-model.dart';
+import '../../blocs/slider_bloc/slider_bloc.dart';
+import '../../blocs/slider_bloc/slider_event.dart';
+import '../../blocs/slider_bloc/slider_state.dart';
 
 class SliderTop extends StatelessWidget {
   SliderTop({super.key});

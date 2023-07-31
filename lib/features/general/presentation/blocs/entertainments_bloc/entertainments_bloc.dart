@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 
-import '../../../domain/repository/entertainments/entertainments-repository.dart';
+import '../../../data/repository/entertainments/entertainments-repository.dart';
 import 'entertainments_event.dart';
 import 'entertainments_state.dart';
 

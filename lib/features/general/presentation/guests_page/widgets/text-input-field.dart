@@ -16,8 +16,18 @@ class TextInputField extends StatelessWidget {
 
 
   var maskFormatter = MaskTextInputFormatter();
-
-  MaskTextInputFormatter formatterForField(label) {
+  late final TextInputType keyboardType;
+  TextInputType getKeyboardType(String label) {
+    if (label == 'Телефон'){
+      keyboardType = TextInputType.phone; 
+    }
+    else{
+      keyboardType = TextInputType.text;
+    }
+    return keyboardType;
+  }
+  
+  MaskTextInputFormatter formatterForField(String label) {
     if (label == 'Телефон') {
       maskFormatter = new MaskTextInputFormatter(
           mask: '+# ### ### ## ##',
@@ -37,7 +47,7 @@ class TextInputField extends StatelessWidget {
       padding: EdgeInsets.only(left: 12.w, right: 12.w),
       child: Center(
         child: TextFormField(
-          keyboardType: TextInputType.phone,
+          keyboardType: getKeyboardType(labelText),
 
           inputFormatters: [
             formatterForField(labelText)
