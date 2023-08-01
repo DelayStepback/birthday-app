@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NavButtonGeneral extends StatefulWidget {
   final String title;
+
   const NavButtonGeneral({super.key, required this.title});
 
   @override
@@ -11,6 +12,7 @@ class NavButtonGeneral extends StatefulWidget {
 
 class _NavButtonGeneralState extends State<NavButtonGeneral> {
   late bool _selected;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -18,28 +20,26 @@ class _NavButtonGeneralState extends State<NavButtonGeneral> {
     super.initState();
   }
 
-  void _changeSelected(){
+  void _changeSelected() {
     setState(() {
       _selected = !_selected;
-
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
       width: 156.w,
       height: 50.h,
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
       decoration: ShapeDecoration(
-        color: _selected ? Color(0xFFFDAC07): Color(0xFFFDBBBB),
+        color: _selected ? const Color(0xFFFDAC07) : const Color(0xFFFDBBBB),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(15).r,
         ),
       ),
-      child:
-      Center(
+      child: Center(
         child: Text(
           widget.title,
           style: TextStyle(

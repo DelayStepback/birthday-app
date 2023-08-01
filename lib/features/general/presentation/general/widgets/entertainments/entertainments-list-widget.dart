@@ -1,6 +1,7 @@
 import 'package:birthday_app/features/general/data/models/general/entertainments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../blocs/entertainments_bloc/entertainments_bloc.dart';
 import '../../../blocs/entertainments_bloc/entertainments_event.dart';
@@ -26,24 +27,27 @@ class EntertainmentsListView extends StatelessWidget {
           return Column(
             children: [
               ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: state.listCount,
-                  itemBuilder: (context, index) => EntertainmentsTile(
-                      title: entertainmentsList[index].title,
-                      description: entertainmentsList[index].description,
-                      imagePath: entertainmentsList[index].imagePath)),
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: state.listCount,
+                itemBuilder: (context, index) => EntertainmentsTile(
+                    title: entertainmentsList[index].title,
+                    description: entertainmentsList[index].description,
+                    imagePath: entertainmentsList[index].imagePath),
+              ),
               InkWell(
                 onTap: () => {
-                  BlocProvider.of<EntertainmentsBloc>(context).add(ChangeViewEntertainmentsEvent(
-                      entertainments: state.entertainments,
-                      listCount: state.listCount))
+                  BlocProvider.of<EntertainmentsBloc>(context).add(
+                    ChangeViewEntertainmentsEvent(
+                        entertainments: state.entertainments,
+                        listCount: state.listCount),
+                  )
                 },
                 child: Text(
                   state.listCount != 2 ? 'Свернуть ▲' : 'Развернуть ▼',
-                  style: const TextStyle(
-                    color: Color(0xFF171010),
-                    fontSize: 14,
+                  style: TextStyle(
+                    color: const Color(0xFF171010),
+                    fontSize: 14.sp,
                     fontFamily: 'Jost',
                     fontWeight: FontWeight.w400,
                     decoration: TextDecoration.underline,

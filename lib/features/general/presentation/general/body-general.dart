@@ -17,7 +17,7 @@ class BodyGeneral extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         SliderTop(),
-        TextAfterUpAnimated(),
+        const _TextAfterUpAnimated(),
         SizedBox(
           height: 15.h,
         ),
@@ -33,8 +33,8 @@ class BodyGeneral extends StatelessWidget {
                             MaterialPageRoute(
                                 builder: (context) => const GuestsPage()))
                       },
-                  child: NavButtonGeneral(title: 'Список гостей')),
-              NavButtonGeneral(title: 'Вишлист')
+                  child: const NavButtonGeneral(title: 'Список гостей')),
+              const NavButtonGeneral(title: 'Вишлист')
             ],
           ),
         ),
@@ -51,12 +51,12 @@ class BodyGeneral extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
         ),
-        const SizedBox(
-          height: 16,
+        SizedBox(
+          height: 16.h,
         ),
         const MenuGrid(),
-        const SizedBox(
-          height: 30,
+        SizedBox(
+          height: 30.h,
         ),
         Text(
           'Развлечения',
@@ -69,8 +69,8 @@ class BodyGeneral extends StatelessWidget {
           ),
         ),
         const EntertainmentsListView(),
-        const SizedBox(
-          height: 30,
+        SizedBox(
+          height: 30.h,
         ),
         Text(
           'Место',
@@ -82,8 +82,8 @@ class BodyGeneral extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
         ),
-        const SizedBox(
-          height: 16,
+        SizedBox(
+          height: 16.h,
         ),
         const MapKitYandexWidget(),
         Text(
@@ -95,8 +95,8 @@ class BodyGeneral extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
         ),
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: 10.h,
         ),
         GestureDetector(
           onTap: () => _launchUrl('https://prosto-les.clients.site/'),
@@ -112,8 +112,8 @@ class BodyGeneral extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(
-          height: 104,
+        SizedBox(
+          height: 104.h,
         ),
       ],
     );
@@ -127,21 +127,23 @@ class BodyGeneral extends StatelessWidget {
   }
 }
 
-class TextAfterUpAnimated extends StatefulWidget {
-  const TextAfterUpAnimated({super.key});
+class _TextAfterUpAnimated extends StatefulWidget {
+  const _TextAfterUpAnimated({super.key});
 
   @override
-  State<TextAfterUpAnimated> createState() => _TextAfterUpAnimatedState();
+  State<_TextAfterUpAnimated> createState() => _TextAfterUpAnimatedState();
 }
 
-class _TextAfterUpAnimatedState extends State<TextAfterUpAnimated> {
+class _TextAfterUpAnimatedState extends State<_TextAfterUpAnimated> {
   bool _selectedBottomAppBarText = false;
 
   void _changeText() {
-    setState(() {
-      _selectedBottomAppBarText =
-          _selectedBottomAppBarText == true ? false : true;
-    });
+    setState(
+      () {
+        _selectedBottomAppBarText =
+            _selectedBottomAppBarText == true ? false : true;
+      },
+    );
   }
 
   @override
@@ -157,19 +159,19 @@ class _TextAfterUpAnimatedState extends State<TextAfterUpAnimated> {
                 fontSize: 18.sp,
                 fontFamily: 'Jost',
                 fontWeight: FontWeight.w400,
-                height: 2,
+                height: 36 / 18.h,
               )
             : TextStyle(
                 color: const Color(0xFF161010),
                 fontSize: 14.sp,
                 fontFamily: 'Jost',
                 fontWeight: FontWeight.w400,
-                height: 1,
+                height: 14 / 14.h,
               ),
-        duration: Duration(seconds: 2),
+        duration: const Duration(seconds: 2),
         child: Padding(
           padding: EdgeInsets.only(left: 16.w, right: 27.w, top: 16.h),
-          child: Text(
+          child: const Text(
             'Приглашаю своих дорогих друзей отметить мой день рождения в замечательном месте с множеством развлечений, вкусных блюд и хорошим настроением!',
           ),
         ),

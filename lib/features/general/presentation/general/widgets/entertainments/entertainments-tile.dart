@@ -15,7 +15,7 @@ class EntertainmentsTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()=>{},
+      onTap: () => {},
       child: ListTile(
         leading: SizedBox(
           width: 42.w,
@@ -28,7 +28,7 @@ class EntertainmentsTile extends StatelessWidget {
             ),
           ),
         ),
-        minVerticalPadding: 15,
+        minVerticalPadding: 15.h,
         //titleAlignment: ListTileTitleAlignment.titleHeight,
         title: Text(title),
         titleTextStyle: TextStyle(
@@ -44,10 +44,10 @@ class EntertainmentsTile extends StatelessWidget {
           fontFamily: 'Jost',
           fontWeight: FontWeight.w400,
         ),
-        trailing: const Icon(
+        trailing: Icon(
           Icons.arrow_forward_ios,
-          size: 11,
-          color: Color(0xFF4E4343),
+          size: 11.sp,
+          color: const Color(0xFF4E4343),
         ),
         isThreeLine: false,
       ),
