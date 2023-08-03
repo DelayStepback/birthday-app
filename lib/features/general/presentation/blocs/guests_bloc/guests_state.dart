@@ -13,14 +13,12 @@ class GuestsLoadingState extends GuestsState {
 }
 
 class GuestsLoadedState extends GuestsState {
-
   final List<Guest> allGuests;
 
   GuestsLoadedState({required this.allGuests});
 
   @override
   List<Object?> get props => [allGuests];
-
 }
 
 class GuestsErrorState extends GuestsState {

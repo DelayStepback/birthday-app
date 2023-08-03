@@ -1,4 +1,6 @@
+import 'package:birthday_app/features/general/data/models/wishlist/wishitem.dart';
 import 'package:birthday_app/features/general/data/services/guests-service.dart';
+import 'package:birthday_app/features/general/data/services/wishlist-service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,6 +15,7 @@ import 'features/general/presentation/blocs/entertainments_bloc/entertainments_b
 import 'features/general/presentation/blocs/food_bloc/food_bloc.dart';
 import 'features/general/presentation/blocs/guests_bloc/guests_bloc.dart';
 import 'features/general/presentation/blocs/slider_bloc/slider_bloc.dart';
+import 'features/general/presentation/blocs/wishlist_bloc/wishlist_bloc.dart';
 import 'features/general/presentation/general/general-screen.dart';
 
 Future<void> main() async {
@@ -20,6 +23,7 @@ Future<void> main() async {
   await Hive.initFlutter();
 
   Hive.registerAdapter(GuestAdapter());
+  Hive.registerAdapter(WishItemAdapter());
   await Hive.openBox<Guest>("_guestsBox");
 
 
@@ -42,11 +46,15 @@ class MyApp extends StatelessWidget {
             RepositoryProvider(create: (context) => EntertainmentsRepository()),
             RepositoryProvider(create: (context) => SliderRepository()),
             RepositoryProvider(create: (context) => GuestsService()),
+            RepositoryProvider(create: (context) => WishItemsService()),
           ],
           child: MultiBlocProvider(
             providers: [
               BlocProvider(
                 create: (context) => GuestsBloc(RepositoryProvider.of<GuestsService>(context)),
+              ),
+              BlocProvider(
+                create: (context) => WishItemsBloc(RepositoryProvider.of<WishItemsService>(context)),
               ),
               BlocProvider(
                   create: (context) =>

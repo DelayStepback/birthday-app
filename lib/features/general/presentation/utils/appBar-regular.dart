@@ -34,7 +34,7 @@ class AppBarRegular extends StatelessWidget implements PreferredSizeWidget{
         ),
       ),
       centerTitle: true,
-      elevation: 12,
+      elevation: 3,
       backgroundColor: Colors.white,
     );
   }

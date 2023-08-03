@@ -5,7 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import '../../../data/models/guests/guest.dart';
 import '../../blocs/guests_bloc/guests_bloc.dart';
-import '../../blocs/guests_bloc/guests_event.dart';class AddGuestModalMenu extends StatefulWidget {
+import '../../blocs/guests_bloc/guests_event.dart';
+
+class AddGuestModalMenu extends StatefulWidget {
   final String action;
   final Guest? oldGuest;
 
@@ -82,31 +84,37 @@ class _AddGuestModalMenuState extends State<AddGuestModalMenu> {
                   SizedBox(
                     height: 12.h,
                   ),
-                Container(
-                  color: Color(0xFFF2F8EF),
-                  height: 61.sp,
-                  padding: EdgeInsets.only(top: 8.h, left: 12.w, right: 12.w, bottom: 8.h),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(birthdayDate, style: TextStyle(
-                        color: Color(0xFF171010),
-                        fontSize: birthdayDate == 'Дата рождения'? 13: 16,
-                        fontFamily: 'Jost',
-                        fontWeight: birthdayDate == 'Дата рождения'? FontWeight.w400 : FontWeight.w500,
-                      ),),
-                      IconButton(
-                        icon: Icon(Icons.calendar_month),
-                        onPressed: () => _selectDate(context),
-                      ),
-                    ],
+                  Container(
+                    color: const Color(0xFFF2F8EF),
+                    height: 61.sp,
+                    padding: EdgeInsets.only(
+                        top: 8.h, left: 12.w, right: 12.w, bottom: 8.h),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          birthdayDate,
+                          style: TextStyle(
+                            color: const Color(0xFF171010),
+                            fontSize: birthdayDate == 'Дата рождения' ? 13.sp : 16.sp,
+                            fontFamily: 'Jost',
+                            fontWeight: birthdayDate == 'Дата рождения'
+                                ? FontWeight.w400
+                                : FontWeight.w500,
+                          ),
+                        ),
+                        IconButton(
+                          padding: EdgeInsets.all(0),
+                          icon: Icon(Icons.calendar_today_outlined, size: 24.r,),
+                          onPressed: () => _selectDate(context),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
                   SizedBox(
                     height: 12.h,
                   ),
-
                   TextInputField(
                       textEditingController: phoneController,
                       labelText: 'Телефон',
@@ -114,7 +122,6 @@ class _AddGuestModalMenuState extends State<AddGuestModalMenu> {
                   SizedBox(
                     height: 12.h,
                   ),
-
                   TextInputField(
                       textEditingController: professionController,
                       labelText: 'Профессия',
@@ -143,17 +150,18 @@ class _AddGuestModalMenuState extends State<AddGuestModalMenu> {
                       }
                     },
                     child: Container(
-                      width: 156,
-                      height: 50,
+                      width: 156.w,
+                      height: 50.h,
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 12),
+                              horizontal: 20, vertical: 12)
+                          .r,
                       decoration: ShapeDecoration(
                         color: const Color(0xFF47802B),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
+                          borderRadius: BorderRadius.circular(15).r,
                         ),
                       ),
-                      child: const Row(
+                      child: Row(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -162,7 +170,7 @@ class _AddGuestModalMenuState extends State<AddGuestModalMenu> {
                             'Записаться',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 16,
+                              fontSize: 16.sp,
                               fontFamily: 'Jost',
                               fontWeight: FontWeight.w600,
                             ),

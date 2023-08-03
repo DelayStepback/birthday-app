@@ -3,19 +3,10 @@ import 'package:hive/hive.dart';
 import '../models/guests/guest.dart';
 
 class GuestsService {
-  var _guests;
+  late Box<Guest> _guests;
 
   Future<void> init() async {
-//    print(Hive.isAdapterRegistered(0));
-//    _guests = await Hive.openBox('guestsBox');
     _guests = await Hive.openBox<Guest>("_guestsBox");
-    // _guests.add(Guest(
-    //     firstName: 'InitialName',
-    //     lastName: 'asdasd',
-    //     birthdayDate: DateTime.now(),
-    //     createdTime: DateTime.now(),
-    //     phone: '32424',
-    //     profession: 'profession'));
   }
 
   Future<Guest> getGuest(String firstName, String lastName) async {

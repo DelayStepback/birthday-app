@@ -54,18 +54,18 @@ class TextInputField extends StatelessWidget {
           ],
           autofocus: autofocus,
           controller: textEditingController,
-          style: const TextStyle(
-            color: Color(0xFF171010),
-            fontSize: 16,
+          style: TextStyle(
+            color: const Color(0xFF171010),
+            fontSize: 16.sp,
             fontFamily: 'Jost',
             fontWeight: FontWeight.w500,
           ),
           decoration: InputDecoration(
             border: InputBorder.none,
             labelText: labelText,
-            labelStyle: const TextStyle(
-              color: Color(0xFF4E4343),
-              fontSize: 13,
+            labelStyle:  TextStyle(
+              color: const Color(0xFF4E4343),
+              fontSize: 13.sp,
               fontFamily: 'Jost',
               fontWeight: FontWeight.w400,
             ),

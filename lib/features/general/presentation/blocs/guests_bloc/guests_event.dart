@@ -44,7 +44,20 @@ class DeleteGuest extends GuestsEvent {
   List<Object?> get props => [guest];
 }
 
-class LoadGuestsEvent extends GuestsEvent{
+class LoadGuestsEvent extends GuestsEvent {
+  @override
+  List<Object?> get props => [];
+}
+
+class FilterGuestsEvent extends GuestsEvent {
+  final List<Guest> guests;
+  final int filter;
+
+  const FilterGuestsEvent({
+    required this.guests,
+    required this.filter,
+  });
+
   @override
   List<Object?> get props => [];
 }

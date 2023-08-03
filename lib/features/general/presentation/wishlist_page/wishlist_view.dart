@@ -1,17 +1,17 @@
-import 'package:birthday_app/features/general/presentation/blocs/guests_bloc/guests_event.dart';
-import 'package:birthday_app/features/general/presentation/guests_page/widgets/add-guest-modal.dart';
-import 'package:birthday_app/features/general/presentation/guests_page/widgets/guests-list-widget.dart';
+import 'package:birthday_app/features/general/presentation/wishlist_page/widgets/add-wishlist-modal.dart';
+import 'package:birthday_app/features/general/presentation/wishlist_page/widgets/wishlist-list-widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../blocs/guests_bloc/guests_bloc.dart';
-import '../blocs/guests_bloc/guests_state.dart';
+import '../blocs/wishlist_bloc/wishlist_bloc.dart';
+import '../blocs/wishlist_bloc/wishlist_event.dart';
+import '../blocs/wishlist_bloc/wishlist_state.dart';
 import '../utils/appBar-regular.dart';
 
-class GuestsPage extends StatelessWidget {
-  const GuestsPage({super.key});
+class WishItemsPage extends StatelessWidget {
+  const WishItemsPage({super.key});
 
-  void addGuest(BuildContext context, String action) {
+  void addWishItem(BuildContext context, String action) {
     showModalBottomSheet(
       isScrollControlled: true,
       shape: RoundedRectangleBorder(
@@ -19,9 +19,9 @@ class GuestsPage extends StatelessWidget {
       context: context,
       builder: (context) => SingleChildScrollView(
         padding: const EdgeInsets.all(16).w,
-        child: AddGuestModalMenu(
+        child: AddWishItemModalMenu(
           action: action,
-          oldGuest: null,
+          oldWishItem: null,
         ),
       ),
     );
@@ -38,16 +38,16 @@ class GuestsPage extends StatelessWidget {
           appBar: AppBar(),
         ),
       ),
-      body: BlocBuilder<GuestsBloc, GuestsState>(
+      body: BlocBuilder<WishItemsBloc, WishItemsState>(
         builder: (context, state) {
-          if (state is GuestsLoadingState) {
-            BlocProvider.of<GuestsBloc>(context).add(LoadGuestsEvent());
+          if (state is WishItemsLoadingState) {
+            BlocProvider.of<WishItemsBloc>(context).add(LoadWishItemsEvent());
             return const Center(
               child: CircularProgressIndicator(),
             );
           }
-          if (state is GuestsLoadedState) {
-            return GuestsList(guestList: state.allGuests);
+          if (state is WishItemsLoadedState) {
+            return WishItemsList(wishItemList: state.allWishItems);
           }
           return const Text('loading failed: ');
         },
@@ -57,7 +57,7 @@ class GuestsPage extends StatelessWidget {
         height: 84.h,
         child: FittedBox(
           child: FloatingActionButton(
-            onPressed: () => addGuest(context, 'create'),
+            onPressed: () => addWishItem(context, 'create'),
             backgroundColor: const Color(0xFF47802B),
             shape: const CircleBorder(),
             child: Icon(

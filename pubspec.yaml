@@ -32,6 +32,8 @@ flutter:
   - assets/images/general/
   - assets/images/general/menu/
   - assets/images/general/entertainments/
+  - assets/images/guests/avatar_default.png
+
   fonts:
   - family: Jost
     fonts:

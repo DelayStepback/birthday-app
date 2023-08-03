@@ -4,6 +4,7 @@ import 'package:birthday_app/features/general/presentation/general/widgets/menu/
 import 'package:birthday_app/features/general/presentation/general/widgets/nav-button-general.dart';
 import 'package:birthday_app/features/general/presentation/general/widgets/slider-top.dart';
 import 'package:birthday_app/features/general/presentation/guests_page/guests_view.dart';
+import 'package:birthday_app/features/general/presentation/wishlist_page/wishlist_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -34,7 +35,14 @@ class BodyGeneral extends StatelessWidget {
                                 builder: (context) => const GuestsPage()))
                       },
                   child: const NavButtonGeneral(title: 'Список гостей')),
-              const NavButtonGeneral(title: 'Вишлист')
+              GestureDetector(
+                  onTap: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const WishItemsPage()))
+                      },
+                  child: const NavButtonGeneral(title: 'Вишлист')),
             ],
           ),
         ),

@@ -23,6 +23,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFFAFBF9),
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(48.h),
           child: AppBarRegular(titleName: widget.titleName, appBar: AppBar(),)),
