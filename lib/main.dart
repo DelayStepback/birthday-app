@@ -1,5 +1,5 @@
 import 'package:birthday_app/features/general/data/models/wishlist/wishitem.dart';
-import 'package:birthday_app/features/general/data/services/guests-service.dart';
+import 'package:birthday_app/features/general/data/repository/guests/guests-repository.dart';
 import 'package:birthday_app/features/general/data/services/wishlist-service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,6 +17,8 @@ import 'features/general/presentation/blocs/guests_bloc/guests_bloc.dart';
 import 'features/general/presentation/blocs/slider_bloc/slider_bloc.dart';
 import 'features/general/presentation/blocs/wishlist_bloc/wishlist_bloc.dart';
 import 'features/general/presentation/general/general-screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 Future<void> main() async {
   AndroidYandexMap.useAndroidViewSurface = false;
@@ -26,7 +28,9 @@ Future<void> main() async {
   Hive.registerAdapter(WishItemAdapter());
   await Hive.openBox<Guest>("_guestsBox");
 
-
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -45,16 +49,18 @@ class MyApp extends StatelessWidget {
             RepositoryProvider(create: (context) => FoodRepository()),
             RepositoryProvider(create: (context) => EntertainmentsRepository()),
             RepositoryProvider(create: (context) => SliderRepository()),
-            RepositoryProvider(create: (context) => GuestsService()),
+            RepositoryProvider(create: (context) => GuestsRepository()),
             RepositoryProvider(create: (context) => WishItemsService()),
           ],
           child: MultiBlocProvider(
             providers: [
               BlocProvider(
-                create: (context) => GuestsBloc(RepositoryProvider.of<GuestsService>(context)),
+                create: (context) =>
+                    GuestsBloc(RepositoryProvider.of<GuestsRepository>(context)),
               ),
               BlocProvider(
-                create: (context) => WishItemsBloc(RepositoryProvider.of<WishItemsService>(context)),
+                create: (context) => WishItemsBloc(
+                    RepositoryProvider.of<WishItemsService>(context)),
               ),
               BlocProvider(
                   create: (context) =>

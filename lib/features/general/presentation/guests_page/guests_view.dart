@@ -14,6 +14,7 @@ class GuestsPage extends StatelessWidget {
   void addGuest(BuildContext context, String action) {
     showModalBottomSheet(
       isScrollControlled: true,
+      isDismissible: false,
       shape: RoundedRectangleBorder(
           borderRadius: const BorderRadius.all(Radius.circular(20)).w),
       context: context,

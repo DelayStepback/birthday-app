@@ -17,6 +17,8 @@ class Guest extends HiveObject with EquatableMixin {
   final String phone;
   @HiveField(5)
   final String profession;
+  @HiveField(6)
+  late String id;
 
   Guest({
     required this.firstName,
@@ -25,6 +27,7 @@ class Guest extends HiveObject with EquatableMixin {
     required this.createdTime,
     required this.phone,
     required this.profession,
+    this.id = '',
   });
 
   Guest copyWith({
@@ -45,8 +48,30 @@ class Guest extends HiveObject with EquatableMixin {
     );
   }
 
+  Map<String, dynamic> toJson() =>
+      {
+        'firstName': firstName,
+        'lastName': lastName,
+        'birthdayDate': birthdayDate,
+        'createdTime': createdTime,
+        'phone': phone,
+        'profession': profession,
+        'id': id,
+      };
+
+  static Guest fromJson(Map<String, dynamic> json) =>
+      Guest(firstName: json['firstName'],
+          lastName: json['lastName'],
+          birthdayDate: json['birthdayDate'],
+          createdTime: json['createdTime'],
+          phone: json['phone'],
+          profession: json['profession'],
+          id: json['id'],
+      );
+
   @override
-  List<Object?> get props => [
+  List<Object?> get props =>
+      [
         firstName,
         lastName,
         birthdayDate,

@@ -54,137 +54,134 @@ class _AddGuestModalMenuState extends State<AddGuestModalMenu> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 633.h,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Dialog(
-            elevation: 0,
-            insetPadding: const EdgeInsets.all(0),
-            child: SizedBox(
-              height: 633.h,
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 20.h,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Dialog(
+          elevation: 0,
+          insetPadding: const EdgeInsets.all(0),
+          child: SizedBox(
+            height: 633.h,
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 20.h,
+                ),
+                TextInputField(
+                    textEditingController: firstNameController,
+                    labelText: 'Имя',
+                    autofocus: true),
+                SizedBox(
+                  height: 12.h,
+                ),
+                TextInputField(
+                    textEditingController: lastNameController,
+                    labelText: 'Фамилия',
+                    autofocus: false),
+                SizedBox(
+                  height: 12.h,
+                ),
+                Container(
+                  color: const Color(0xFFF2F8EF),
+                  height: 61.sp,
+                  padding: EdgeInsets.only(
+                      top: 8.h, left: 12.w, right: 12.w, bottom: 8.h),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        birthdayDate,
+                        style: TextStyle(
+                          color: const Color(0xFF171010),
+                          fontSize: birthdayDate == 'Дата рождения' ? 13.sp : 16.sp,
+                          fontFamily: 'Jost',
+                          fontWeight: birthdayDate == 'Дата рождения'
+                              ? FontWeight.w400
+                              : FontWeight.w500,
+                        ),
+                      ),
+                      IconButton(
+                        padding: const EdgeInsets.all(0),
+                        icon: Icon(Icons.calendar_today_outlined, size: 24.r,),
+                        onPressed: () => _selectDate(context),
+                      ),
+                    ],
                   ),
-                  TextInputField(
-                      textEditingController: firstNameController,
-                      labelText: 'Имя',
-                      autofocus: true),
-                  SizedBox(
-                    height: 12.h,
-                  ),
-                  TextInputField(
-                      textEditingController: lastNameController,
-                      labelText: 'Фамилия',
-                      autofocus: false),
-                  SizedBox(
-                    height: 12.h,
-                  ),
-                  Container(
-                    color: const Color(0xFFF2F8EF),
-                    height: 61.sp,
-                    padding: EdgeInsets.only(
-                        top: 8.h, left: 12.w, right: 12.w, bottom: 8.h),
+                ),
+                SizedBox(
+                  height: 12.h,
+                ),
+                TextInputField(
+                    textEditingController: phoneController,
+                    labelText: 'Телефон',
+                    autofocus: false),
+                SizedBox(
+                  height: 12.h,
+                ),
+                TextInputField(
+                    textEditingController: professionController,
+                    labelText: 'Профессия',
+                    autofocus: false),
+                SizedBox(
+                  height: 50.h,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    var guest = Guest(
+                      firstName: firstNameController.text,
+                      lastName: lastNameController.text,
+                      birthdayDate: selectedDate,
+                      createdTime: DateTime.now(),
+                      phone: phoneController.text,
+                      profession: professionController.text,
+                    );
+                    if (widget.action == 'create') {
+                      context.read<GuestsBloc>().add(AddGuest(guest: guest));
+                      Navigator.pop(context);
+                    }
+                    if (widget.action == 'update') {
+                      context.read<GuestsBloc>().add(UpdateGuest(
+                          guest: widget.oldGuest!, newStateGuest: guest));
+                      Navigator.pop(context);
+                    }
+                  },
+                  child: Container(
+                    width: 156.w,
+                    height: 50.h,
+                    padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 12)
+                        .r,
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFF47802B),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15).r,
+                      ),
+                    ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          birthdayDate,
+                          'Записаться',
                           style: TextStyle(
-                            color: const Color(0xFF171010),
-                            fontSize: birthdayDate == 'Дата рождения' ? 13.sp : 16.sp,
+                            color: Colors.white,
+                            fontSize: 16.sp,
                             fontFamily: 'Jost',
-                            fontWeight: birthdayDate == 'Дата рождения'
-                                ? FontWeight.w400
-                                : FontWeight.w500,
+                            fontWeight: FontWeight.w600,
                           ),
-                        ),
-                        IconButton(
-                          padding: EdgeInsets.all(0),
-                          icon: Icon(Icons.calendar_today_outlined, size: 24.r,),
-                          onPressed: () => _selectDate(context),
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 12.h,
-                  ),
-                  TextInputField(
-                      textEditingController: phoneController,
-                      labelText: 'Телефон',
-                      autofocus: false),
-                  SizedBox(
-                    height: 12.h,
-                  ),
-                  TextInputField(
-                      textEditingController: professionController,
-                      labelText: 'Профессия',
-                      autofocus: false),
-                  SizedBox(
-                    height: 50.h,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      var guest = Guest(
-                        firstName: firstNameController.text,
-                        lastName: lastNameController.text,
-                        birthdayDate: selectedDate,
-                        createdTime: DateTime.now(),
-                        phone: phoneController.text,
-                        profession: professionController.text,
-                      );
-                      if (widget.action == 'create') {
-                        context.read<GuestsBloc>().add(AddGuest(guest: guest));
-                        Navigator.pop(context);
-                      }
-                      if (widget.action == 'update') {
-                        context.read<GuestsBloc>().add(UpdateGuest(
-                            guest: widget.oldGuest!, newStateGuest: guest));
-                        Navigator.pop(context);
-                      }
-                    },
-                    child: Container(
-                      width: 156.w,
-                      height: 50.h,
-                      padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 12)
-                          .r,
-                      decoration: ShapeDecoration(
-                        color: const Color(0xFF47802B),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15).r,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Записаться',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16.sp,
-                              fontFamily: 'Jost',
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
+                )
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

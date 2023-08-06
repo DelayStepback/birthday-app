@@ -23,6 +23,7 @@ class GuestAdapter extends TypeAdapter<Guest> {
       createdTime: fields[3] as DateTime,
       phone: fields[4] as String,
       profession: fields[5] as String,
+      id: fields[6] as String,
     );
   }
 
@@ -41,7 +42,10 @@ class GuestAdapter extends TypeAdapter<Guest> {
       ..writeByte(4)
       ..write(obj.phone)
       ..writeByte(5)
-      ..write(obj.profession);
+      ..write(obj.profession)
+      ..writeByte(6)
+      ..write(obj.id);
+
   }
 
   @override

@@ -1,11 +1,11 @@
-import 'package:birthday_app/features/general/data/services/guests-service.dart';
+import 'package:birthday_app/features/general/data/repository/guests/guests-repository.dart';
 import 'package:bloc/bloc.dart';
 import '../../../data/models/guests/guest.dart';
 import 'guests_event.dart';
 import 'guests_state.dart';
 
 class GuestsBloc extends Bloc<GuestsEvent, GuestsState> {
-  final GuestsService _guestsService;
+  final GuestsRepository _guestsService;
 
   GuestsBloc(this._guestsService) : super(GuestsLoadingState()) {
     on<AddGuest>(_onAddGuest);
@@ -50,15 +50,15 @@ class GuestsBloc extends Bloc<GuestsEvent, GuestsState> {
   Future<void> _onLoadGuestsEvent(LoadGuestsEvent event, emit) async {
     // emit(GuestsLoadingState());
     await _guestsService.init();
-    final List<Guest> guests = _guestsService.getGuests();
+    final List<Guest> guests = await _guestsService.getGuests();
     emit(GuestsLoadedState(allGuests: guests));
   }
 
-  void _onFilterGuestsEvent(FilterGuestsEvent event, emit) async {
+  Future<void> _onFilterGuestsEvent(FilterGuestsEvent event, emit) async {
     final state = this.state;
     // default up-to-date filter
     List<Guest> guests;
-    guests = _guestsService.getGuests();
+    guests = await _guestsService.getGuests();
 
     if (state is GuestsLoadedState) {
       switch (event.filter) {

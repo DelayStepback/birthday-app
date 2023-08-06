@@ -1,18 +1,12 @@
 import 'package:hive/hive.dart';
 
-import '../models/guests/guest.dart';
+import '../../models/guests/guest.dart';
 
-class GuestsService {
+class GuestsHiveDatabase {
   late Box<Guest> _guests;
 
   Future<void> init() async {
     _guests = await Hive.openBox<Guest>("_guestsBox");
-  }
-
-  Future<Guest> getGuest(String firstName, String lastName) async {
-    final Guest guest = _guests.values.firstWhere((element) =>
-        element.firstName == firstName && element.lastName == lastName);
-    return guest;
   }
 
   List<Guest> getGuests() {
@@ -36,12 +30,11 @@ class GuestsService {
     await _guests.put(index, newGuest);
   }
 
-  bool _eqTwoGuests(Guest element, Guest guest) {
-    return element.firstName == guest.firstName &&
-        element.lastName == guest.lastName &&
-        element.birthdayDate == guest.birthdayDate &&
-        element.createdTime == guest.createdTime &&
-        element.phone == guest.phone &&
-        element.profession == guest.profession;
+  Future<void> storeGuests(List<Guest> guests) async {
+    _guests.addAll(guests);
   }
+}
+
+bool _eqTwoGuests(Guest element, Guest guest) {
+  return element.id == guest.id;
 }
